@@ -138,6 +138,8 @@ const App = () => {
           {isOpen && "Logout"}
           {!isOpen && <span className={`absolute left-full ml-2 p-2 ${isDark ? 'bg-zinc-700' : 'bg-teal-400 '} text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap`}>Logout</span>}
         </button>
+
+        <a className={`mt-4 ${isOpen ? '' : 'hidden'} text-sm ${isDark ? 'text-gray-300' : 'text-gray-900'}`} href="https://www.abarissoftech.com/"><i className="ri-copyright-line"></i>Powered by Abaris Softech</a>
         
       </div>
     </div>
