@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-const GoodsReceivedForm = () => {
+const GoodsReceivedForm = ({theme}) => {
 
 const [clientName, setClientName] = useState('');
 const [originFrom, setOriginFrom] = useState('');
@@ -40,7 +40,7 @@ console.log(formData);
 
   return (
     <div className="min-h-screen w-full  text-white p-6 ">
-      <div className=" bg-zinc-800/80 p-6 rounded-lg shadow-md">
+      <div className={` ${theme ? 'bg-zinc-800/80 text-white' : 'bg-gray-100 text-gray-900'} p-6 rounded-lg shadow-md`}>
         <div className="flex justify-between items-center mb-6 bg-gradient-to-r from-teal-700 to-teal-600 text-white py-3 px-4 rounded-lg shadow-md">
           <h2 className="text-2xl font-semibold flex items-center gap-2">
             <i className="ri-truck-line text-teal-400"></i>
@@ -49,9 +49,9 @@ console.log(formData);
           <span className=" font-bold">DATE - {new Date().toLocaleDateString()}</span>
         </div>
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-zinc-800/90 p-4 rounded-lg shadow-md ">
+          <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${theme ? 'bg-zinc-800/90 text-white' : 'bg-gray-200 text-gray-900'} p-4 rounded-lg shadow-md`}>
             <div className="flex-1">
-              <label className=" text-zinc-300 flex items-center gap-2">
+              <label className=" flex items-center gap-2">
                 <i className="ri-user-line text-teal-400"></i>
                 Client Name
               </label>
@@ -60,11 +60,11 @@ console.log(formData);
                 value={clientName}
                 onChange={(e) => setClientName(e.target.value)}
                 placeholder="BLS Operations"
-                className="w-full p-2 mt-1 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90"
+                className={`w-full p-2 mt-1 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
               />
             </div>
             <div className="flex-1">
-              <label className=" text-zinc-300 flex items-center gap-2">
+              <label className=" flex items-center gap-2">
                 <i className="ri-map-pin-line text-teal-400"></i>
                 Origin From
               </label>
@@ -73,13 +73,13 @@ console.log(formData);
                 value={originFrom}
                 onChange={(e) => setOriginFrom(e.target.value)}
                 placeholder="Origin From"
-                className="w-full p-2 mt-1 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90"
+                className={`w-full p-2 mt-1 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
               />
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-zinc-800/90 p-4 rounded-lg shadow-md ">
+          <div className={`grid grid-cols-1 md:grid-cols-3 gap-4 ${theme ? 'bg-zinc-800/90 text-white' : 'bg-gray-200 text-gray-900'} p-4 rounded-lg shadow-md `}>
             <div className="flex-1">
-              <label className=" text-zinc-300 flex items-center gap-2">
+              <label className=" flex items-center gap-2">
                 <i className="ri-truck-line text-teal-400"></i>
                 Transporter Name
               </label>
@@ -88,11 +88,11 @@ console.log(formData);
                 value={transporterName}
                 onChange={(e) => setTransporterName(e.target.value)}
                 placeholder="Transporter Name"
-                className="w-full p-2 mt-1 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90"
+                className={`w-full p-2 mt-1 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
               />
             </div>
             <div className="flex-1">
-              <label className=" text-zinc-300 flex items-center gap-2">
+              <label className=" flex items-center gap-2">
                 <i className="ri-car-line text-teal-400"></i>
                 Truck
               </label>
@@ -101,11 +101,11 @@ console.log(formData);
                 value={truck}
                 onChange={(e) => setTruck(e.target.value)}
                 placeholder="Truck"
-                className="w-full p-2 mt-1 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90"
+                className={`w-full p-2 mt-1 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
               />
             </div>
             <div className="flex-1">
-              <label className=" text-zinc-300 flex items-center gap-2">
+              <label className=" flex items-center gap-2">
                 <i className="ri-trailer-line text-teal-400"></i>
                 Trailer
               </label>
@@ -114,13 +114,13 @@ console.log(formData);
                 value={trailer}
                 onChange={(e) => setTrailer(e.target.value)}
                 placeholder="Trailer"
-                className="w-full p-2 mt-1 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90"
+                className={`w-full p-2 mt-1 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
               />
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-zinc-800/90 p-4 rounded-lg shadow-md ">
+          <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${theme ? 'bg-zinc-800/90 text-white' : 'bg-gray-200 text-gray-900'} p-4 rounded-lg shadow-md `}>
             <div className="flex-1">
-              <label className=" text-zinc-300 flex items-center gap-2">
+              <label className=" flex items-center gap-2">
                 <i className="ri-user-smile-line text-teal-400"></i>
                 Driver Name
               </label>
@@ -129,11 +129,11 @@ console.log(formData);
                 value={driverName}
                 onChange={(e) => setDriverName(e.target.value)}
                 placeholder="Driver Name"
-                className="w-full p-2 mt-1 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90"
+                className={`w-full p-2 mt-1 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
               />
             </div>
             <div className="flex-1">
-              <label className=" text-zinc-300 flex items-center gap-2">
+              <label className=" flex items-center gap-2">
                 <i className="ri-passport-line text-teal-400"></i>
                 ID/Passport No.
               </label>
@@ -142,12 +142,12 @@ console.log(formData);
                 value={idPassportNo}
                 onChange={(e) => setIdPassportNo(e.target.value)}
                 placeholder="ID/Passport No."
-                className="w-full p-2 mt-1 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90"
+                className={`w-full p-2 mt-1 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
               />
             </div>
           </div>
-          <div className="bg-zinc-800/90 p-4 rounded-lg shadow-md ">
-            <label className=" text-zinc-300 flex items-center gap-2">
+          <div className={`p-4 rounded-lg shadow-md ${theme ? 'bg-zinc-800/90 text-white' : 'bg-gray-200 text-gray-900'}`}>
+            <label className=" flex items-center gap-2">
               <i className="ri-package-line text-teal-400"></i>
               Commodity
             </label>
@@ -156,12 +156,12 @@ console.log(formData);
               value={Commodity}
               onChange={(e) => setCommodity(e.target.value)}
               placeholder="Commodity"
-              className="w-full p-2 mt-1 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90"
+              className={`w-full p-2 mt-1 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
             />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 bg-zinc-800/90 p-4 rounded-lg shadow-md ">
+          <div className={`grid grid-cols-1 md:grid-cols-4 gap-4 ${theme ? 'bg-zinc-800/90 text-white' : 'bg-gray-200 text-gray-900'} p-4 rounded-lg shadow-md `}>
             <div className="flex-1">
-              <label className=" text-zinc-300 flex items-center gap-2">
+              <label className=" flex items-center gap-2">
                 <i className="ri-file-line text-teal-400"></i>
                 Reference/BL No.
               </label>
@@ -170,11 +170,11 @@ console.log(formData);
                 value={referenceBLNo}
                 onChange={(e) => setReferenceBLNo(e.target.value)}
                 placeholder="Reference/BL No."
-                className="w-full p-2 mt-1 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90"
+                className={`w-full p-2 mt-1 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
               />
             </div>
             <div className="flex-1">
-              <label className=" text-zinc-300 flex items-center gap-2">
+              <label className=" flex items-center gap-2">
                 <i className="ri-inbox-line text-teal-400"></i>
                 Container No.
               </label>
@@ -183,11 +183,11 @@ console.log(formData);
                 value={containerNo}
                 onChange={(e) => setContainerNo(e.target.value)}
                 placeholder="Container No."
-                className="w-full p-2 mt-1 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90"
+                className={`w-full p-2 mt-1 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
               />
             </div>
             <div className="flex-1">
-              <label className=" text-zinc-300 flex items-center gap-2">
+              <label className=" flex items-center gap-2">
                 <i className="ri-box-3-line text-teal-400"></i>
                 Quantity
               </label>
@@ -196,18 +196,18 @@ console.log(formData);
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
                 placeholder="Quantity"
-                className="w-full p-2 mt-1 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90"
+                className={`w-full p-2 mt-1 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
               />
             </div>
             <div className="flex-1">
-              <label className=" text-zinc-300 flex items-center gap-2">
+              <label className=" flex items-center gap-2">
                 <i className="ri-list-check text-teal-400"></i>
                 Type
               </label>
               <select
                 value={type}
                 onChange={(e) => setType(e.target.value)}
-                className="w-full p-2 mt-1 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90"
+                className={`w-full p-2 mt-1 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
               >
                 <option value="">Select</option>
                 <option value="type1">Type 1</option>
@@ -215,7 +215,7 @@ console.log(formData);
               </select>
             </div>
           </div>
-          <div className="bg-zinc-800/90 p-4 rounded-lg shadow-md  border-l-4 border-teal-400">
+          <div className={`p-4 rounded-lg shadow-md ${theme ? 'bg-zinc-800/90 text-white' : 'bg-gray-200 text-gray-900'}`}>
             <h3 className="text-lg font-semibold text-teal-400 mb-4 flex items-center gap-2">
               <i className="ri-arrow-right-line text-teal-400"></i>
               Incomings
@@ -229,7 +229,7 @@ console.log(formData);
               ].map((item, index) => (
                 <div
                   key={`incoming-${index}`}
-                  className="grid grid-cols-1 md:grid-cols-[1fr_1fr_2fr] gap-4 bg-zinc-800/90 p-4 rounded-lg shadow-md hover:shadow-xl hover:bg-teal-400/10 hover:text-white text-teal-400 transition-all duration-300 border-l-2 border-transparent hover:border-teal-400"
+                  className={`grid grid-cols-1 md:grid-cols-[1fr_1fr_2fr] gap-4 ${theme ? 'bg-zinc-800/90 text-white' : 'bg-gray-100 text-gray-900'} p-4 rounded-lg shadow-md hover:shadow-xl hover:bg-teal-400/10  transition-all duration-300 border-l-2 border-transparent hover:border-teal-400`}
                 >
                   <div className=" font-medium flex items-center gap-2 md:text-base text-sm">
                     <i className={`${item.icon}  md:hidden`}></i>
@@ -242,7 +242,7 @@ console.log(formData);
                       Status
                     </label>
                     <select
-                      className={`w-full p-2 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90`}
+                      className={`w-full p-2 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
                     >
                       <option value="">YES/NO</option>
                       <option value="yes">Yes</option>
@@ -257,15 +257,15 @@ console.log(formData);
                     <input
                       type="text"
                       placeholder={item.placeholder}
-                      className="w-full p-2 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90"
+                      className={`w-full p-2 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
                     />
                   </div>
                 </div>
               ))}
             </div>
           </div>
-          <div className="bg-zinc-800/90 p-4 rounded-lg shadow-md  border-l-4 border-teal-400">
-            <h3 className="text-lg font-semibold  mb-4 flex items-center gap-2">
+          <div className={` ${theme ? 'bg-zinc-800/90 text-white' : 'bg-gray-200 text-gray-900'} p-4 rounded-lg shadow-md  border-l-4 border-teal-400`}>
+            <h3 className="text-lg font-semibold text-teal-400 mb-4 flex items-center gap-2">
               <i className="ri-arrow-left-line text-teal-400"></i>
               Outgoings
             </h3>
@@ -278,7 +278,7 @@ console.log(formData);
               ].map((item, index) => (
                 <div
                   key={`outgoing-${index}`}
-                    className="grid grid-cols-1 md:grid-cols-[1fr_1fr_2fr] gap-4 bg-zinc-800/90 p-4 rounded-lg shadow-md hover:shadow-xl hover:bg-teal-400/10 hover:text-white text-teal-400 transition-all duration-300 border-l-2 border-transparent hover:border-teal-400">
+                    className={`grid grid-cols-1 md:grid-cols-[1fr_1fr_2fr] gap-4 ${theme ? 'bg-zinc-800/90 text-white' : 'bg-gray-100 text-gray-900'} p-4 rounded-lg shadow-md hover:shadow-xl hover:bg-teal-400/10   transition-all duration-300 border-l-2 border-transparent hover:border-teal-400`}>
                   <div className=" font-medium flex items-center gap-2 md:text-base text-sm">
                     <i className={`${item.icon}  md:hidden`}></i>
                     <span className="md:hidden">ID: </span>
@@ -290,7 +290,7 @@ console.log(formData);
                       Status
                     </label>
                     <select
-                      className={`w-full p-2 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90`}
+                      className={`w-full p-2 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
                     >
                       <option value="">YES/NO</option>
                       <option value="yes">Yes</option>
@@ -305,34 +305,34 @@ console.log(formData);
                     <input
                       type="text"
                       placeholder={item.placeholder}
-                      className="w-full p-2 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90"
+                      className={`w-full p-2 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
                     />
                   </div>
                 </div>
               ))}
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-zinc-800/90 p-4 rounded-lg shadow-md ">
+          <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${theme ? 'bg-zinc-800/90 text-white' : 'bg-gray-200 text-gray-900'} p-4 rounded-lg shadow-md `}>
             <div className="flex-1">
-              <label className=" text-zinc-300 flex items-center gap-2">
+              <label className=" flex items-center gap-2">
                 <i className="ri-edit-line text-teal-400"></i>
                 Operations [Sign]
               </label>
               <input
                 type="text"
                 placeholder="Operations Signature"
-                className="w-full p-2 mt-1 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90"
+                className={`w-full p-2 mt-1 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
               />
             </div>
             <div className="flex-1">
-              <label className=" text-zinc-300 flex items-center gap-2">
+              <label className=" flex items-center gap-2">
                 <i className="ri-edit-line text-teal-400"></i>
                 Manager [Sign]
               </label>
               <input
                 type="text"
                 placeholder="Manager Signature"
-                className="w-full p-2 mt-1 bg-zinc-700/80 border border-gray-700 rounded text-white focus:ring-2 focus:ring-teal-400 focus:outline-none hover:bg-zinc-700/90"
+                className={`w-full p-2 mt-1 ${theme ? 'bg-zinc-700/80 text-white ' : 'bg-gray-300 text-gray-900 '} rounded  focus:ring-2 focus:ring-teal-400 focus:outline-none `}
               />
             </div>
           </div>

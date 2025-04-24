@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ContainerEntryPlan = () => {
+const ContainerEntryPlan = ({theme}) => {
   const demoData = [
     {
       no: '1',
@@ -149,118 +149,103 @@ const ContainerEntryPlan = () => {
       <div className="w-full">
         <div className="flex justify-between items-center mb-6 bg-gradient-to-r from-teal-700 to-teal-600 text-white p-5 rounded-lg">
           <h2 className="text-xl font-semibold">DAILY ACTIVITY REPORT - CONTAINER'S ENTRY PLAN</h2>
-          <span className=" font-bold">DATE - {new Date().toLocaleDateString()}</span>
+          <span className="font-bold">DATE - {new Date().toLocaleDateString()}</span>
         </div>
         <div className="flex flex-col gap-4">
           {/* Headers */}
-          <div className="hidden md:grid grid-cols-[1fr_2fr_2fr_3fr_2fr_1fr_2fr_2fr_2fr_1fr_2fr_1fr] bg-zinc-800 p-4 gap-3 rounded-lg border-l-4 border-teal-400 shadow-md">
-            <div className=" font-bold flex flex-col bg-teal-400/5 p-2 rounded-lg items-center  text-center">
-              <i className="ri-number-1 text-teal-400"></i>
-              No.
-            </div>
-            <div className=" font-bold flex bg-teal-400/5 p-2 flex-col items-center text-center">
-              <i className="ri-truck-line text-teal-400"></i>
-              Truck No.
-            </div>
-            <div className=" font-bold flex flex-col bg-teal-400/5 p-2 rounded-lg items-center text-center">
-              <i className="ri-truck-line text-teal-400"></i>
-              Trailer No.
-            </div>
-            <div className=" font-bold flex flex-col bg-teal-400/5 p-2 rounded-lg items-center text-center">
-              <i className="ri-user-line text-teal-400"></i>
-              Transporter Name
-            </div>
-            <div className=" font-bold flex flex-col bg-teal-400/5 p-2 rounded-lg items-center text-center">
-              <i className="ri-inbox-line text-teal-400"></i>
-              Container No.
-            </div>
-            <div className=" font-bold flex flex-col bg-teal-400/5 p-2 rounded-lg items-center  text-center">
-              <i className="ri-ruler-line text-teal-400"></i>
-              Size
-            </div>
-            <div className=" font-bold flex flex-col bg-teal-400/5 p-2 rounded-lg items-center  text-center">
-              <i className="ri-calendar-line text-teal-400"></i>
-              Return Date
-            </div>
-            <div className=" font-bold flex flex-col bg-teal-400/5 p-2 rounded-lg items-center  text-center">
-              <i className="ri-box-3-line text-teal-400"></i>
-              Commodity
-            </div>
-            <div className=" font-bold flex flex-col bg-teal-400/5 p-2 rounded-lg items-center  text-center">
-              <i className="ri-user-2-line text-teal-400"></i>
-              Client Name
-            </div>
-            <div className=" font-bold flex flex-col bg-teal-400/5 p-2 rounded-lg items-center  text-center">
-              <i className="ri-file-list-line text-teal-400"></i>
-              Type
-            </div>
-            <div className=" font-bold flex flex-col bg-teal-400/5 p-2 rounded-lg items-center ">
-              <i className="ri-weight-line text-teal-400"></i>
-              Weight
-            </div>
-            <div className=" font-bold flex flex-col bg-teal-400/5 p-2 rounded-lg items-center  text-center">
-              <i className="ri-alert-line text-teal-400"></i>
-              Damaged
-            </div>
-          </div>
+          <div
+      className={`grid grid-cols-1 md:grid-cols-[1fr_2fr_2fr_3fr_2fr_1fr_2fr_2fr_2fr_1fr_2fr_1fr] gap-3 p-4 rounded-xl border-l-4 border-teal-400 shadow-lg transition-all duration-300 animate-fade-in ${
+        theme ? 'bg-zinc-800/50 backdrop-blur-md' : 'bg-gray-100/50 backdrop-blur-md'
+      }`}
+    >
+      {[
+        { icon: 'ri-number-1', label: 'No.', aria: 'Number' },
+        { icon: 'ri-truck-line', label: 'Truck No.', aria: 'Truck Number' },
+        { icon: 'ri-truck-line', label: 'Trailer No.', aria: 'Trailer Number' },
+        { icon: 'ri-user-line', label: 'Transporter Name', aria: 'Transporter Name' },
+        { icon: 'ri-inbox-line', label: 'Container No.', aria: 'Container Number' },
+        { icon: 'ri-ruler-line', label: 'Size', aria: 'Container Size' },
+        { icon: 'ri-calendar-line', label: 'Return Date', aria: 'Return Date' },
+        { icon: 'ri-box-3-line', label: 'Commodity', aria: 'Commodity' },
+        { icon: 'ri-user-2-line', label: 'Client Name', aria: 'Client Name' },
+        { icon: 'ri-file-list-line', label: 'Type', aria: 'Type' },
+        { icon: 'ri-weight-line', label: 'Weight', aria: 'Weight' },
+        { icon: 'ri-alert-line', label: 'Damaged', aria: 'Damaged Status' },
+      ].map(({ icon, label, aria }, index) => (
+        <div
+          key={index}
+          className={`flex flex-col items-center justify-center p-3 rounded-lg  ${
+            theme
+              ? 'bg-teal-400/8 text-white'
+              : 'bg-teal-400/5 text-gray-900'
+          }`}
+        >
+          <i
+            className={`${icon} text-teal-400 text-xl mb-1`}
+            aria-label={aria}
+          ></i>
+          <span className="text-sm font-semibold tracking-wide">{label}</span>
+        </div>
+      ))}
+    </div>
 
           {/* Rows */}
           {demoData.map((item, index) => (
             <div
               key={index}
-              className="grid grid-cols-1 md:grid-cols-[1fr_2fr_2fr_3fr_2fr_1fr_2fr_2fr_2fr_1fr_2fr_1fr] bg-zinc-800/90 p-4 rounded-lg shadow-md hover:shadow-xl hover:bg-teal-400/5 transition-all duration-300 border-l-2 border-transparent hover:border-teal-400"
+              className={`grid grid-cols-1 md:grid-cols-[1fr_2fr_2fr_3fr_2fr_1fr_2fr_2fr_2fr_1fr_2fr_1fr] ${theme ? 'bg-zinc-800/90 text-white' : 'bg-gray-200 text-gray-900'} p-4 rounded-lg shadow-md hover:shadow-xl hover:bg-teal-400/5 transition-all duration-300 border-l-2 border-transparent hover:border-teal-400`}
             >
-              <div className="text-teal-400 font-medium flex items-center gap-2 text-center md:text-base text-sm">
+              <div className="text-teal-400  flex items-center gap-2 text-center md:text-base text-sm">
                 <i className="ri-number-1 md:hidden"></i>
-                <span className="md:hidden">No.: </span>
+                <span className="md:hidden">No. </span>
                 {item.no}
               </div>
-              <div className="font-medium flex items-center gap-2 md:text-base text-sm">
+              <div className=" flex items-center gap-2 md:text-base text-sm">
                 <i className="ri-truck-line text-teal-400 md:hidden"></i>
-                <span className="md:hidden">Truck No.: </span>
+                <span className="md:hidden">Truck No. </span>
                 {item.truckNo}
               </div>
-              <div className="font-medium flex items-center gap-2 md:text-base text-sm">
+              <div className=" flex items-center gap-2 md:text-base text-sm">
                 <i className="ri-truck-line text-teal-400 md:hidden"></i>
                 <span className="md:hidden">Trailer No.: </span>
                 {item.trailerNo}
               </div>
-              <div className="font-medium flex items-center gap-2 md:text-base text-sm">
+              <div className=" flex items-center gap-2 md:text-base text-sm">
                 <i className="ri-user-line text-teal-400 md:hidden"></i>
                 <span className="md:hidden">Transporter: </span>
                 {item.transporterName}
               </div>
-              <div className="text-teal-400 font-medium flex items-center gap-2 md:text-base text-sm">
+              <div className="text-teal-400  flex items-center gap-2 md:text-base text-sm">
                 <i className="ri-inbox-line text-teal-400 md:hidden"></i>
                 <span className="md:hidden">Container No.: </span>
                 {item.containerNo}
               </div>
-              <div className="font-medium flex items-center gap-2 text-center md:text-base text-sm">
+              <div className=" flex items-center gap-2 text-center md:text-base text-sm">
                 <i className="ri-ruler-line text-teal-400 md:hidden"></i>
                 <span className="md:hidden">Size: </span>
                 {item.size}
               </div>
-              <div className="font-medium flex items-center gap-2 md:text-base text-sm">
+              <div className=" flex items-center gap-2 md:text-base text-sm">
                 <i className="ri-calendar-line text-teal-400 md:hidden"></i>
                 <span className="md:hidden">Return Date: </span>
                 {item.returnDate}
               </div>
-              <div className="font-medium flex items-center gap-2 md:text-base text-sm">
+              <div className=" flex items-center gap-2 md:text-base text-sm">
                 <i className="ri-box-3-line text-teal-400 md:hidden"></i>
                 <span className="md:hidden">Commodity: </span>
                 {item.commodity}
               </div>
-              <div className="font-medium flex items-center gap-2 md:text-base text-sm">
+              <div className=" flex items-center gap-2 md:text-base text-sm">
                 <i className="ri-user-2-line text-teal-400 md:hidden"></i>
                 <span className="md:hidden">Client: </span>
                 {item.clientName}
               </div>
-              <div className="font-medium flex items-center gap-2 text-center md:text-base text-sm">
+              <div className=" flex items-center gap-2 text-center md:text-base text-sm">
                 <i className="ri-file-list-line text-teal-400 md:hidden"></i>
                 <span className="md:hidden">Type: </span>
                 {item.type}
               </div>
-              <div className="font-medium flex items-center gap-2 md:text-base text-sm">
+              <div className=" flex items-center gap-2 md:text-base text-sm">
                 <i className="ri-weight-line text-teal-400 md:hidden"></i>
                 <span className="md:hidden">Weight: </span>
                 {item.weight}
@@ -270,7 +255,7 @@ const ContainerEntryPlan = () => {
                 <span className="md:hidden">Damaged: </span>
                 <span
                   className={`text-sm px-2 py-1 rounded-full flex items-center gap-1 ${
-                    item.damaged === 'Yes' ? 'bg-red-900 text-red-300' : 'bg-green-900 text-green-300'
+                    item.damaged === 'Yes' ? (!theme ? 'bg-red-300 text-red-800' : 'bg-red-900 text-red-300') : (!theme ? 'bg-green-300 text-green-800' : 'bg-green-900 text-green-300')
                   }`}
                 >
                   <i

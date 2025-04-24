@@ -13,7 +13,7 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-const Statics = () => {
+const Statics = ({ theme }) => {
   // Chart data
   const chartData = {
     labels: ['Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'],
@@ -110,13 +110,13 @@ const Statics = () => {
           ].map((stat, index) => (
             <div
               key={index}
-              className="bg-zinc-800/80 backdrop-blur-xl p-6 rounded-xl shadow-xl border-l-4 transition-all duration-300 hover:shadow-2xl hover:scale-105"
+              className={`${theme ? 'bg-zinc-800/80' : 'bg-gray-100'} backdrop-blur-xl p-6 rounded-xl shadow-xl border-l-4 transition-all duration-300 hover:shadow-2xl hover:scale-105`}
               style={{ borderColor: stat.color }}
             >
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-zinc-400 font-medium">{stat.label}</p>
-                  <h3 className="text-2xl font-bold text-white mt-1">{stat.value}</h3>
+                  <h3 className={`${theme ? 'text-white' : 'text-gray-900'} text-2xl font-bold mt-1`}>{stat.value}</h3>
                 </div>
                 <div className="p-3 bg-gradient-to-br rounded-full shadow-lg" style={{ background: `${stat.color}20` }}>
                   <i className={`${stat.icon} text-3xl`} style={{ color: stat.color }}></i>
@@ -145,7 +145,7 @@ const Statics = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-10">
           {/* Truck Reminder */}
-          <div className="bg-zinc-800/80 p-4 rounded-lg">
+          <div className={` ${theme ? 'bg-zinc-800/80 text-white' : 'bg-gray-100 text-gray-900'} p-4 rounded-lg `}>
             <h3 className="text-lg font-semibold text-teal-400 mb-2">Truck Reminder</h3>
             <p>AP 39 TR 9655</p>
             <p>Truck National Permit Reminder, 20-04-2025</p>
@@ -155,7 +155,7 @@ const Statics = () => {
           </div>
 
           {/* Booking Analysis Chart */}
-          <div className="bg-zinc-800/80 p-4 rounded-lg">
+          <div className={` ${theme ? 'bg-zinc-800/80 text-white' : 'bg-gray-100 text-gray-900'} p-4 rounded-lg`}>
             <h3 className="text-lg font-semibold text-teal-400 mb-2">Booking Analysis</h3>
             <Line data={chartData} options={chartOptions} />
           </div>
