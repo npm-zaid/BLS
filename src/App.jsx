@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import ProofOfDelivery from './components/ProofOfDelivery'
-import TransporterForm from './components/TransporterForm'
+
 import GoodsReceivedForm from './components/GoodsReceivedForm'
 import ContainerEntryPlan from './components/ContainerEntryPlan'
 import ContainerInterchange from './components/ContainerInterchange'
-import MultiLogisticsReport from './components/MultiLogisticsReport'
-import Dashboard from './components/Dashboard'
+// Reports
+import StockReport from './components/StockReport'
+import ClearanceReport from './components/ClearanceReport'
+import TrucksReport from './components/TrucksReport'
+import WarehouseProcessingReport from './components/WarehouseProcessingReport'
+import WarehouseStockReport from './components/WarehouseStockReport'
+import ContainerReturnReport from './components/ContainerReturnReport'
+
+
+
 import Statics from './components/Statics'
 import { Routes, Route } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
@@ -106,18 +114,68 @@ const App = () => {
           {!isOpen && <span className={`absolute left-full ml-2 p-2 ${isDark ? 'bg-zinc-700 text-white' : 'bg-teal-400 '} text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap`}>Container Interchange</span>}
         </NavLink>
 
-        <NavLink
-          to="/multi-logistics-report"
-          onClick={() => setIsOpen(false)}
-          className={({isActive}) =>
-            `p-3 rounded-lg transition-all duration-300 flex items-center gap-3 group relative
-            ${isActive ? (isDark ? 'bg-zinc-700 text-teal-400' : 'bg-gray-300 text-gray-900') : ''} ${isOpen ? 'w-full' : ''}`
-          }
-        >
-          <i className="ri-align-item-bottom-fill"></i>
-          {isOpen && "Reports"}
-          {!isOpen && <span className={`absolute left-full ml-2 p-2 ${isDark ? 'bg-zinc-700 text-white' : 'bg-teal-400 '} text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap`}>Reports</span>}
-        </NavLink>
+        <div className="relative group">
+  <NavLink
+    to="#"
+    onClick={(e) => e.preventDefault()}
+    className={({ isActive }) =>
+      `p-3 rounded-lg transition-all duration-300 flex items-center gap-3 group-hover:bg-teal-400/50 relative
+      ${isActive ? (isDark ? ' text-gray-100' : ' text-gray-900') : ''} ${isOpen ? 'w-full' : ''}`
+    }
+  >
+    <i className="ri-align-item-bottom-fill"></i>
+    {isOpen && "Reports"}
+   {!isOpen && <span className={`absolute left-full  p-4 `}></span>}
+  </NavLink>
+
+  {/* Dropdown Menu */}
+  <div className={`absolute -top-10 left-15 mt-2 bg-teal-400/60 backdrop-blur-sm shadow-lg rounded-lg z-10 hidden group-hover:block w-60`}>
+    <NavLink
+      to="/reports/stock"
+      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'} rounded-t-lg`}
+      onClick={() => setIsOpen(false)}
+    >
+      Stocks
+    </NavLink>
+    <NavLink
+      to="/reports/clearance-customs"
+      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'}`}
+      onClick={() => setIsOpen(false)}
+    >
+      Clearance & Customs Report
+    </NavLink>
+    <NavLink
+      to="/reports/trucks-operational"
+      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'} rounded-b-lg`}
+      onClick={() => setIsOpen(false)}
+    >
+      Trucks Operational Report
+    </NavLink>
+    <NavLink
+      to="/reports/warehouse-processing"
+      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'}`}
+      onClick={() => setIsOpen(false)}
+    >
+      Warehouse Processing Report
+    </NavLink>
+    <NavLink
+      to="/reports/warehouse-stock"
+      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'} rounded-b-lg`}
+      onClick={() => setIsOpen(false)}
+    >
+      Warehouse Stock Report
+    </NavLink>
+    <NavLink
+      to="/reports/container-return"
+      className={`block px-4 py-2 text-sm ${isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'}`}
+      onClick={() => setIsOpen(false)}
+    >
+      Container Return Report
+    </NavLink>
+   
+  </div>
+</div>
+
 
         <NavLink
           to="/settings"
@@ -139,8 +197,6 @@ const App = () => {
           {!isOpen && <span className={`absolute left-full ml-2 p-2 ${isDark ? 'bg-zinc-700' : 'bg-teal-400 '} text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap`}>Logout</span>}
         </button>
 
-        <a className={`mt-4 ${isOpen ? '' : 'hidden'} text-sm ${isDark ? 'text-gray-300' : 'text-gray-900'}`} href="https://www.abarissoftech.com/"><i className="ri-copyright-line"></i>Powered by Abaris Softech</a>
-        
       </div>
     </div>
 
@@ -156,13 +212,18 @@ const App = () => {
     </button>
       <Routes>
         <Route path="/" element={<Statics theme={isDark} />} />
-          <Route path="/dashboard" element={<Dashboard theme={isDark}/>} />
+         
           <Route path="/proof-of-delivery" element={<ProofOfDelivery theme={isDark}/>} />
-          <Route path="/transporter-form" element={<TransporterForm theme={isDark}/>} />
+
           <Route path="/goods-received-form" element={<GoodsReceivedForm theme={isDark}/>} />
           <Route path="/container-entry-plan" element={<ContainerEntryPlan theme={isDark}/>} />
           <Route path="/container-interchange" element={<ContainerInterchange theme={isDark}/>} />
-          <Route path="/multi-logistics-report" element={<MultiLogisticsReport theme={isDark}/>} />
+          <Route path="/reports/stock" element={<StockReport theme={isDark} />} />
+      <Route path="/reports/clearance-customs" element={<ClearanceReport theme={isDark} />} />
+    <Route path="/reports/trucks-operational" element={<TrucksReport theme={isDark} />} />
+    <Route path="/reports/warehouse-processing" element={<WarehouseProcessingReport theme={isDark} />} />
+    <Route path="/reports/warehouse-stock" element={<WarehouseStockReport theme={isDark} />} />
+    <Route path="/reports/container-return" element={<ContainerReturnReport theme={isDark} />} />
         </Routes>
      
     </div>

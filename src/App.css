@@ -13,3 +13,18 @@
     background: #27272a; 
     border-radius: 10px;
   }
+
+  .scroller2::-webkit-scrollbar{
+    height: 7px;
+  }
+  
+  /* Track */
+  .scroller2::-webkit-scrollbar-track {
+   display: none;
+  }
+   
+  /* Handle */
+  .scroller2::-webkit-scrollbar-thumb{
+    background: #02CFB9; 
+    border-radius: 10px;
+  }
