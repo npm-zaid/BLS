@@ -83,15 +83,15 @@ const updateContainer = (id, field, value) => {
 
   return (
    
-    <div className="min-h-screen w-full text-white p-6">
+    <div className="min-h-screen w-full text-white md:p-6">
 
       <div className={` ${theme ? 'bg-zinc-800/80 text-white' : 'bg-gray-100 text-gray-900'} p-6 rounded-lg shadow-md`}>
         <div className="flex justify-between items-center mb-6 bg-gradient-to-r from-teal-700 to-teal-600 text-white py-3 px-4 rounded-lg shadow-md">
           <h2 className="text-2xl font-semibold flex items-center gap-2">
-            <i className="ri-checkbox-circle-line text-teal-400"></i>
+            <i className="ri-checkbox-circle-line text-teal-400 "></i>
             Proof of Delivery
           </h2>
-          <span className=" font-bold">DATE - {new Date().toLocaleDateString()}</span>
+          <span className=" font-bold hidden md:block">DATE - {new Date().toLocaleDateString()}</span>
         </div>
         
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -125,7 +125,7 @@ const updateContainer = (id, field, value) => {
           </div>
           
           <div className={` ${theme ? 'bg-zinc-800/90' : 'bg-gray-200'} p-4 rounded-lg shadow-md hover:shadow-xl transition-all duration-300`}>
-            <p className={` ${theme ? 'text-white' : 'text-zinc-900'}  flex items-center gap-2`}>
+            <p className={` ${theme ? 'text-white' : 'text-zinc-900'}  flex items-center gap-2 text-sm md:text-md`}>
               <i className="ri-information-line text-teal-400"></i>
               This is to confirm the delivery of all the goods in proper conditions, according to the following descriptions:
             </p>
@@ -181,7 +181,7 @@ const updateContainer = (id, field, value) => {
             
    {/* container details */}
    <div className="overflow-x-auto">
-      <div className="w-full grid grid-cols-5 gap-0">
+      <div className="w-full grid sm:grid-cols-5 gap-0">
         {/* Header */}
         <div className={` ${theme ? 'bg-zinc-700/80' : 'bg-gray-300'} p-3 text-left flex items-center gap-2`}>
           <i className="ri-box-1-line text-teal-400"></i>
@@ -351,14 +351,14 @@ const updateContainer = (id, field, value) => {
           </div>
 
            {/* Transporter Form */}
-      <div className="h-screen w-full  text-white mt-10">
-      <div className={`p-6 rounded-lg shadow-md ${theme ? 'bg-zinc-800/80' : 'bg-gray-200'}`}>
+      <div className=" w-full  text-white mt-10">
+      <div className={`p-6 rounded-lg shadow-md ${theme ? 'bg-zinc-800/80' : 'bg-gray-200/80'}`}>
         <h1 className="text-2xl font-bold text-teal-400 mb-6 flex items-center gap-2">
           <i className="ri-truck-line text-teal-400"></i>
           Transporter Details
         </h1>
         <div className="space-y-6">
-          <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${theme ? 'bg-zinc-800/90' : 'bg-gray-200'} p-4 rounded-lg shadow-md hover:shadow-xl  transition-all duration-300`}>
+          <div className={`grid grid-cols-1 md:grid-cols-2 gap-4   rounded-lg transition-all duration-300`}>
             <div className="flex-1">
               <label className={` text-zinc-300 flex items-center gap-2 ${theme ? 'text-white' : 'text-zinc-900'}`}>
                 <i className="ri-user-line text-teal-400"></i>
@@ -386,7 +386,7 @@ const updateContainer = (id, field, value) => {
               />
             </div>
           </div>
-          <div className={`grid grid-cols-1 md:grid-cols-3 gap-4 ${theme ? 'bg-zinc-800/90' : 'bg-gray-200'} p-4 rounded-lg hover:shadow-lg shadow-teal-400  transition-all duration-300`}>
+          <div className={`grid grid-cols-1 md:grid-cols-3 gap-4   shadow-teal-400  transition-all duration-300`}>
             <div className="flex-1">
               <label className={` text-zinc-300 flex items-center gap-2 ${theme ? 'text-white' : 'text-zinc-900'}`}>
                 <i className="ri-user-smile-line text-teal-400"></i>
@@ -432,7 +432,7 @@ const updateContainer = (id, field, value) => {
               We thank you for choosing GMS as your prioritized business partner. We look forward to working with you again.
             </p>
           </div>
-          <div className={`grid grid-cols-1 md:grid-cols-3 gap-4 ${theme ? 'bg-zinc-800/90' : 'bg-gray-200'} p-4 rounded-lg shadow-md hover:shadow-xl  transition-all duration-300`}>
+          <div className={`grid grid-cols-1 md:grid-cols-3 gap-4  `}>
             <div className="flex-1">
               <label className={` text-zinc-300 flex items-center gap-2 ${theme ? 'text-white' : 'text-zinc-900'}`}>
                 <i className="ri-building-line text-teal-400"></i>

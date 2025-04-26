@@ -31,24 +31,24 @@ const ReportLayout = ({ data, headers, title, theme }) => {
   };
 
   return (
-    <div className="p-6">
-      <div className={`w-[84vw] ${theme ? 'bg-zinc-800/80' : 'bg-gray-100'} p-6 rounded-lg`}>
+    <div className="sm:p-6">
+      <div className={`w-[75vw] sm:w-[84vw] ${theme ? 'bg-zinc-800/80' : 'bg-gray-100'} p-6 rounded-lg`}>
         <div className=" flex justify-between items-center mb-6 bg-gradient-to-r from-teal-700 to-teal-600 text-white py-3 px-4 rounded-lg shadow-md">
           <h2 className="text-2xl font-semibold flex items-center gap-2">
             <i className="ri-align-item-bottom-fill"></i>
             {title}
           </h2>
-          <span className="font-bold">DATE - {new Date().toLocaleDateString()}</span>
+          <span className="font-bold hidden md:block">DATE - {new Date().toLocaleDateString()}</span>
         </div>
 
         {/* Search Bar */}
-        <div className="relative max-w-md mb-2">
+        <div className="relative max-w-md mb-5">
           <input
             type="text"
             value={searchQuery}
             onChange={handleSearch}
             placeholder="File No. / Bill of Lading / Container No."
-            className={`w-full p-3 ${theme ? 'bg-zinc-700/80 text-white' : 'bg-gray-300 text-gray-900'} rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all`}
+            className={`report w-full p-3 ${theme ? 'bg-zinc-700/80 text-white' : 'bg-gray-300 text-gray-900'} rounded-lg focus:outline-none focus:ring-2  focus:ring-teal-400 transition-all`}
           />
           <i className="ri-search-line absolute right-3 top-1/2 transform -translate-y-1/2 text-zinc-400"></i>
         </div>

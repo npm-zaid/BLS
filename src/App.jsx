@@ -35,7 +35,7 @@ const App = () => {
     setIsDark(!isDark)
   }
   return (
-    <main className='flex'>
+    <main className='flex bg-zinc-700'>
 
   {/**  SIDEBAR */}
   <div className={`h-screen ${isDark ? 'bg-zinc-800 text-white' : 'bg-gray-100 text-gray-900'}  p-5 transition-all z-40  duration-300 ${isOpen ? 'sm:w-[25vw] w-[100vw]' : 'sm:w-[8vw] w-[15vw]'}`}>
@@ -108,7 +108,7 @@ const App = () => {
         </NavLink>
 
 
-        <div className="relative group">
+        <div className="relative group ">
   <NavLink
     to="#"
     onClick={(e) => e.preventDefault()}
@@ -220,7 +220,7 @@ const App = () => {
       </div>
     </div>
 
-    <div  className={` ${isOpen?'w-0 sm:w-full':'w-full'} flex h-screen ${isDark ? 'bg-zinc-700' : 'bg-zinc-300'} overflow-y-scroll scroller p-5 `}>
+    <div  className={` ${isOpen?'w-0 sm:w-full':'w-full'} flex h-screen ${isDark ? 'bg-zinc-700' : 'bg-zinc-300'} overflow-y-scroll scroller ${isOpen?'p-0':'p-5'}`}>
     <button
       onClick={handleThemeChange}
       className="absolute top-3 right-4 z-0 p-2 px-3 bg-teal-500 dark:bg-teal-700 hover:bg-teal-600 dark:hover:bg-teal-800 transition-all duration-300 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-teal-300 dark:focus:ring-teal-500"

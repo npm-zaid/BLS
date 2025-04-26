@@ -53,7 +53,7 @@ const Statics = ({ theme }) => {
           {[
             {
               label: 'Receivable',
-              value: '₹19,78,82,763',
+              value: '₹19,78,820',
               change: '+10%',
               icon: 'ri-wallet-line',
               color: '#F97316', // Orange
@@ -61,7 +61,7 @@ const Statics = ({ theme }) => {
             },
             {
               label: 'Payable',
-              value: '₹29,80,177',
+              value: '₹29,800',
               change: '-5%',
               icon: 'ri-bank-card-line',
               color: '#FACC15', // Yellow
@@ -69,7 +69,7 @@ const Statics = ({ theme }) => {
             },
             {
               label: 'Expense',
-              value: '₹24,000',
+              value: '₹2,400',
               change: '+3%',
               icon: 'ri-money-dollar-circle-line',
               color: '#5EA9ED', // Dark Blue

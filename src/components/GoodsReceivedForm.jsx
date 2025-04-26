@@ -39,14 +39,14 @@ console.log(formData);
 
 
   return (
-    <div className="min-h-screen w-full  text-white p-6 ">
+    <div className="min-h-screen w-full  text-white sm:p-6 ">
       <div className={` ${theme ? 'bg-zinc-800/80 text-white' : 'bg-gray-100 text-gray-900'} p-6 rounded-lg shadow-md`}>
         <div className="flex justify-between items-center mb-6 bg-gradient-to-r from-teal-700 to-teal-600 text-white py-3 px-4 rounded-lg shadow-md">
           <h2 className="text-2xl font-semibold flex items-center gap-2">
             <i className="ri-truck-line text-teal-400"></i>
             Goods Received
           </h2>
-          <span className=" font-bold">DATE - {new Date().toLocaleDateString()}</span>
+          <span className=" font-bold hidden md:block">DATE - {new Date().toLocaleDateString()}</span>
         </div>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${theme ? 'bg-zinc-800/90 text-white' : 'bg-gray-200 text-gray-900'} p-4 rounded-lg shadow-md`}>
@@ -215,7 +215,7 @@ console.log(formData);
               </select>
             </div>
           </div>
-          <div className={`p-4 rounded-lg shadow-md ${theme ? 'bg-zinc-800/90 text-white' : 'bg-gray-200 text-gray-900'}`}>
+          <div className={`p-4 rounded-lg shadow-md ${theme ? 'bg-zinc-800/90 text-white' : 'bg-gray-200 text-gray-900'} border-l-4 border-teal-400 `}>
             <h3 className="text-lg font-semibold text-teal-400 mb-4 flex items-center gap-2">
               <i className="ri-arrow-right-line text-teal-400"></i>
               Incomings
@@ -237,7 +237,7 @@ console.log(formData);
                     {item.id}
                   </div>
                   <div>
-                    <label className="md:hidden  text-zinc-300 flex items-center gap-2">
+                    <label className="md:hidden  text-zinc-800 flex items-center gap-2">
                       <i className="ri-checkbox-circle-line "></i>
                       Status
                     </label>
@@ -250,7 +250,7 @@ console.log(formData);
                     </select>
                   </div>
                   <div>
-                    <label className="md:hidden  text-zinc-300 flex items-center gap-2">
+                    <label className="md:hidden  text-zinc-800 flex items-center gap-2">
                       <i className="ri-building-line "></i>
                       Company
                     </label>
@@ -285,7 +285,7 @@ console.log(formData);
                     {item.id}
                   </div>
                   <div>
-                    <label className="md:hidden  text-zinc-300 flex items-center gap-2">
+                    <label className="md:hidden  text-zinc-800 flex items-center gap-2">
                       <i className="ri-checkbox-circle-line text-teal-400"></i>
                       Status
                     </label>
@@ -298,7 +298,7 @@ console.log(formData);
                     </select>
                   </div>
                   <div>
-                    <label className="md:hidden  text-zinc-300 flex items-center gap-2">
+                    <label className="md:hidden  text-zinc-800 flex items-center gap-2">
                       <i className="ri-building-line text-teal-400"></i>
                       Company
                     </label>

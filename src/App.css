@@ -28,3 +28,13 @@
     background: #02CFB9; 
     border-radius: 10px;
   }
+
+   input::placeholder {
+    content: "Search File, BL, or Container";
+  }
+
+  @media (max-width: 640px) {
+    input::placeholder {
+      content: "Search File, BL, or Container";
+    }
+  }

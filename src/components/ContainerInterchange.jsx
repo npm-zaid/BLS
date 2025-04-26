@@ -2,14 +2,14 @@ import React from 'react';
 
 const ContainerInterchange = ({theme}) => {
   return (
-    <div className="min-h-screen w-full text-white p-6">
+    <div className="min-h-screen w-full text-white sm:p-6">
       <div className={`p-6 rounded-lg shadow-md ${theme ? 'bg-zinc-800/80 text-white' : 'bg-gray-100 text-zinc-900'}`}>
         <div className="flex justify-between items-center mb-6 bg-gradient-to-r from-teal-700 to-teal-600 text-white py-3 px-4 rounded-lg shadow-md">
           <h2 className="text-2xl font-semibold flex items-center gap-2">
             <i className="ri-inbox-line text-teal-400"></i>
             Interchange - Containers
           </h2>
-          <span className=" font-bold">DATE - {new Date().toLocaleDateString()}</span>
+          <span className=" font-bold hidden md:block">DATE - {new Date().toLocaleDateString()}</span>
         </div>
         <div className="space-y-6">
           {/* Group 1: Reference, ISO Code, Shipping Line, Vessel-Voyage */}
