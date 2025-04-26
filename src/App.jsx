@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import ProofOfDelivery from './components/ProofOfDelivery'
 
 import GoodsReceivedForm from './components/GoodsReceivedForm'
@@ -26,6 +26,19 @@ import './App.css'
 const App = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isDark, setIsDark] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDark);
@@ -108,91 +121,138 @@ const App = () => {
         </NavLink>
 
 
-        <div className="relative group ">
+{/* Reports Dropdown */}
+<div className="relative group">
   <NavLink
     to="#"
-    onClick={(e) => e.preventDefault()}
-    className={({ isActive }) =>
-      `p-3 rounded-lg transition-all duration-300 flex items-center gap-3 group-hover:bg-teal-400/50 relative
-      ${isActive ? (isDark ? ' text-gray-100' : ' text-gray-900') : ''} ${isOpen ? 'w-full' : ''}`
-    }
+    onClick={(e) => {
+      e.preventDefault();
+      // Keep sidebar open when toggling dropdown
+      setIsDropdownOpen((prev) => !prev); // Toggle dropdown
+    }}
+    className={`p-3 rounded-lg transition-all duration-300 flex items-center gap-3 hover:bg-teal-400/50 ${
+      isOpen ? 'w-full' : ''
+    } ${isDark ? 'text-gray-100' : 'text-gray-900'}`}
   >
     <i className="ri-align-item-bottom-fill"></i>
-    {isOpen && "Reports"}
-   {!isOpen && <span className={`absolute left-full  p-4 `}></span>}
+    {isOpen && 'Reports'}
+    {!isOpen && <span className={`absolute left-full ml-2 p-2 ${isDark ? 'bg-zinc-700 text-white' : 'bg-teal-400 '} text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap`}>Reports</span>}
   </NavLink>
 
   {/* Dropdown Menu */}
-  <div className={`absolute -top-30 left-15 mt-2 bg-teal-400/60 backdrop-blur-sm shadow-lg rounded-lg z-10 hidden group-hover:block w-60`}>
+  <div
+    className={`absolute -top-14 left-14 mt-1 bg-teal-400/60 backdrop-blur-sm shadow-lg rounded-lg z-20 w-60 ${
+      isDropdownOpen ? 'block' : 'hidden'
+    }`}
+  >
     <NavLink
       to="/reports/stock"
-      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'} rounded-t-lg`}
-      onClick={() => setIsOpen(false)}
+      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${
+        isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'
+      } rounded-t-lg`}
+      onClick={() => {
+        setIsDropdownOpen(false);
+        setIsOpen(false);
+      }}
     >
       Stocks
     </NavLink>
     <NavLink
       to="/reports/clearance-customs"
-      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'}`}
-      onClick={() => setIsOpen(false)}
+      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${
+        isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'
+      }`}
+      onClick={() => {
+        setIsDropdownOpen(false);
+        setIsOpen(false);
+      }}
     >
       Clearance & Customs Report
     </NavLink>
     <NavLink
       to="/reports/trucks-operational"
-      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'}`}
-      onClick={() => setIsOpen(false)}
+      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${
+        isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'
+      }`}
+      onClick={() => {
+        setIsDropdownOpen(false);
+        setIsOpen(false);
+      }}
     >
       Trucks Operational Report
     </NavLink>
     <NavLink
       to="/reports/warehouse-processing"
-      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'}`}
-      onClick={() => setIsOpen(false)}
+      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${
+        isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'
+      }`}
+      onClick={() => {
+        setIsDropdownOpen(false);
+        setIsOpen(false);
+      }}
     >
       Warehouse Processing Report
     </NavLink>
     <NavLink
       to="/reports/warehouse-stock"
-      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'}`}
-      onClick={() => setIsOpen(false)}
+      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${
+        isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'
+      }`}
+      onClick={() => {
+        setIsDropdownOpen(false);
+        setIsOpen(false);
+      }}
     >
       Warehouse Stock Report
     </NavLink>
     <NavLink
       to="/reports/container-return"
-      className={`block px-4 py-2 text-sm ${isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'}`}
-      onClick={() => setIsOpen(false)}
+      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${
+        isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'
+      }`}
+      onClick={() => {
+        setIsDropdownOpen(false);
+        setIsOpen(false);
+      }}
     >
       Container Return Report
     </NavLink>
-
-    {/* container reports */}
     <NavLink
       to="/reports/entry-plan"
-      className={`block px-4 py-2 text-sm ${isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'}`}
-      onClick={() => setIsOpen(false)}
+      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${
+        isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'
+      }`}
+      onClick={() => {
+        setIsDropdownOpen(false);
+        setIsOpen(false);
+      }}
     >
       Container Entry Plan Report
     </NavLink>
-
     <NavLink
       to="/reports/delivery-plan"
-      className={`block px-4 py-2 text-sm ${isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'}`}
-      onClick={() => setIsOpen(false)}
+      className={`block px-4 py-2 border-b border-zinc-700 text-sm ${
+        isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'
+      }`}
+      onClick={() => {
+        setIsDropdownOpen(false);
+        setIsOpen(false);
+      }}
     >
       Container Delivery Plan Report
     </NavLink>
-
     <NavLink
       to="/reports/commodities-plan"
-      className={`block px-4 py-2 text-sm ${isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'}`}
-      onClick={() => setIsOpen(false)}
+      className={`block px-4 py-2 text-sm ${
+        isDark ? 'hover:bg-zinc-800/40' : 'hover:bg-gray-100'
+      }`}
+      onClick={() => {
+        setIsDropdownOpen(false);
+        setIsOpen(false);
+      }}
     >
       Commodities Plan Report
     </NavLink>
-
-   
   </div>
 </div>
 
